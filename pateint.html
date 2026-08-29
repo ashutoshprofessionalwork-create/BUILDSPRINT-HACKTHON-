@@ -45,17 +45,22 @@
 
                 <label for="medical_report">Medical Report:</label>
                 <input type="file" id="medical_report" name="medical_report" accept=".pdf,.doc,.docx" required><br><br>
-                <button type="submit">Register</button>
+                
+                 <label for="password">Create Password:</label>
+                    <input type="password" name="password" placeholder="create a strong password" required>
+                
                 <div class="verification">
                     <h4>Verification:</h4>
                     <label>
                         <input type="checkbox" name="verification" required>
                         I confirm that the information provided is accurate and complete.
                     </label>
+                
                     <label>
                         <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
                         I agree to the Terms and conditions and Privacy Policy of the Blood Donation Portal.
                     </label>
+                    
                 </div>
                 <button type="submit">Submit Request</button>
             </form>
