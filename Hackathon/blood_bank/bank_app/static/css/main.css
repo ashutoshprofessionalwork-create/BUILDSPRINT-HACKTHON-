@@ -540,6 +540,78 @@ footer span {
 }
 
 /* ==========================================================
+   14. ABOUT US PAGE & CUSTOM COMPONENTS
+   ========================================================== */
+.avatar-placeholder {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--color-light-coral);
+  color: var(--color-coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  margin: 0 auto;
+  border: 2px solid rgba(232, 93, 93, 0.25);
+  box-shadow: var(--shadow-sm);
+}
+
+.team-card {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.tech-badge {
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.tech-badge:hover {
+  border-color: var(--color-coral);
+  color: var(--color-coral);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  height: 100%;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-number {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-coral);
+  background-color: var(--color-light-coral);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================
    14. RESPONSIVE DESIGN MEDIA QUERIES
    ========================================================== */
 @media (max-width: 991.98px) {

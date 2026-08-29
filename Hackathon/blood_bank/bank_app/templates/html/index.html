@@ -1,25 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blood donation</title>
+    <title>Lifeline - Home</title>
     {% include 'common/common_css.html' %}
 </head>
+
 <body>
     {% include 'common/navbar.html' %}
-<div class="main-div">
-  
+    {% include 'common/message.html' %}
 
+    <div class="main-div">
+        <!-- Hero Section -->
+        <section class="hero text-center mb-5">
+            <h1 class="hero-title fw-bold">Blood Donation Portal</h1>
+            <p class="hero-subtitle text-muted fs-5">🩸 Where Donors Meet Those in Need 🩸</p>
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                <a href="{% url 'donor-registration' %}" class="btn btn-primary btn-lg">Register as Donor</a>
+                <a href="{% url 'user-registration' %}" class="btn btn-outline-navy btn-lg">User Registration</a>
+            </div>
+        </section>
 
-    
-</div>
-   
+        <!-- Why Blood Donation Matters & What We Offer -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="card h-100 p-4 shadow-sm">
+                    <h2 class="h4 text-navy fw-bold mb-3">Why Blood Donation Matters?</h2>
+                    <p>Blood is needed every day for surgeries, accidents, and medical emergencies. A single blood donation can save up to three lives.</p>
+                    <h5 class="fw-semibold text-navy mt-3">Our platform helps:</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i>Find nearby blood donors</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i>Connect patients with donors instantly</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i>Reduce emergency blood shortages</li>
+                        <li class="mb-0"><i class="fa-solid fa-check text-danger me-2"></i>Promote voluntary blood donation</li>
+                    </ul>
+                </div>
+            </div>
 
+            <div class="col-md-6">
+                <div class="card h-100 p-4 shadow-sm">
+                    <h2 class="h4 text-navy fw-bold mb-3">What We Offer</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3">
+                            <strong>🩸 Find Nearby Donors:</strong> Locate blood donors based on blood group and location.
+                        </li>
+                        <li class="mb-3">
+                            <strong>🚑 Emergency Blood Requests:</strong> Post urgent blood requirements and notify nearby donors.
+                        </li>
+                        <li class="mb-3">
+                            <strong>🤖 AI Chat Assistant:</strong> Get instant guidance about blood donation eligibility and procedures.
+                        </li>
+                        <li class="mb-0">
+                            <strong>🔔 Real-Time Notifications:</strong> Receive alerts for urgent blood requests near you.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
+        <!-- Available Blood Groups -->
+        <section class="card p-4 shadow-sm mb-5 text-center">
+            <h2 class="h4 text-navy fw-bold mb-4">Available Blood Groups</h2>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <span class="blood-badge badge-lg">A+</span>
+                <span class="blood-badge badge-lg">A-</span>
+                <span class="blood-badge badge-lg">B+</span>
+                <span class="blood-badge badge-lg">B-</span>
+                <span class="blood-badge badge-lg">AB+</span>
+                <span class="blood-badge badge-lg">AB-</span>
+                <span class="blood-badge badge-lg">O+</span>
+                <span class="blood-badge badge-lg">O-</span>
+            </div>
+        </section>
 
+        <!-- Our Impact -->
+        <section class="mb-5">
+            <h2 class="h4 text-navy fw-bold text-center mb-4">Our Impact</h2>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">999+</div>
+                        <div class="stat-label">Registered Donors</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Successful Donations</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Emergency Requests</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">60+</div>
+                        <div class="stat-label">Partner Hospitals</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- footer code includede here always  -->
+        <!-- Testimonials -->
+        <section class="card p-4 shadow-sm mb-4">
+            <h3 class="h4 text-navy fw-bold mb-4 text-center">What Our Users Say</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded border h-100">
+                        <p class="fst-italic text-muted mb-2">"This platform saved my life! I found a donor within an hour during a medical emergency."</p>
+                        <span class="fw-semibold text-navy">— John D.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded border h-100">
+                        <p class="fst-italic text-muted mb-2">"The real-time notifications are a game-changer!"</p>
+                        <span class="fw-semibold text-navy">— Sarah M.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded border h-100">
+                        <p class="fst-italic text-muted mb-2">"The registration process was so simple, and I successfully saved a life."</p>
+                        <span class="fw-semibold text-navy">— Blood Donor</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
+    <!-- footer code included here always -->
+    {% include 'common/footer.html' %}
 </body>
 </html>

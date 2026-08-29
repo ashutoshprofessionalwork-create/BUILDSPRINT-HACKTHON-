@@ -10,8 +10,4 @@ urlpatterns = [
     path('aboutUS/',views.aboutUS,name='aboutUS'),
     path('donor-info/',views.donor_info,name='donor-info'),
     path('user-info/',views.user_info,name='user-info'),
-    path('donor-registration/',views.donor_registration,name='donor-registration'),
-    path('donor-registration/',views.donor_registration,name='donor-registration'),
-    path('donor-registration/',views.donor_registration,name='donor-registration'),
-    path('donor-registration/',views.donor_registration,name='donor-registration'),
 ]

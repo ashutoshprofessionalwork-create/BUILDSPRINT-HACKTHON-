@@ -77,5 +77,20 @@ def donor_registration(request):
             messages.success(request, "Donor registered successfully!")
             return redirect("donor-registration")
 
+def user_login(request):
+    return render(request,'user/user_login.html')
+
+def donor_login(request):
+    return render(request,'donor/donor_login.html')
+
+def donor_info(request):
+    return render(request,'user/donor_info.html')
+
+def user_info(request):
+    return render(request,'donor/user_info.html')
+
+def aboutUS(request):
+    return render(request,'html/abouUS.html')
+
 
 

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Lifeline Blood Donation</title>
+    {% include 'common/common_css.html' %}
+</head>
+
+<body>
+    {% include 'common/navbar.html' %}
+    {% include 'common/message.html' %}
+
+    <div class="main-div">
+        <!-- 1. Hero Section -->
+        <section class="hero text-center mb-5">
+            <span class="blood-badge badge-lg mb-3">🩸 Saving Lives, Together</span>
+            <h1 class="hero-title fw-bold">About Us</h1>
+            <p class="hero-subtitle text-muted fs-5 mb-3">Connecting people who need blood with suitable blood donors quickly and seamlessly.</p>
+            <p class="fst-italic fw-semibold text-coral mb-4 fs-5">“Technology can connect people. Humanity can save lives.”</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{% url 'donor-registration' %}" class="btn btn-primary btn-lg">Become a Donor</a>
+                <a href="{% url 'user-registration' %}" class="btn btn-outline-navy btn-lg">Find a Donor</a>
+            </div>
+        </section>
+
+        <!-- 2. About the Project -->
+        <section class="card p-4 p-md-5 shadow-sm mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <h2 class="h3 text-navy fw-bold mb-3">About the Project</h2>
+                    <p class="text-muted leading-relaxed mb-3">
+                        Our platform is designed to make blood donation and blood discovery faster, simpler and more accessible. It provides a centralized platform where blood donors can register themselves and people in need can search for potential donors based on relevant requirements such as blood group and location.
+                    </p>
+                    <p class="text-muted leading-relaxed mb-0">
+                        The project combines web development, database management and AI technology to create a practical solution for an important real-world problem.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="p-4 bg-light rounded-circle d-inline-block border">
+                        <i class="fa-solid fa-hand-holding-medical text-coral" style="font-size: 4rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Our Mission -->
+        <section class="mb-5">
+            <h2 class="h3 text-navy fw-bold text-center mb-4">Our Mission</h2>
+            <div class="row g-3">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card h-100 p-4 text-center shadow-sm">
+                        <i class="fa-solid fa-magnifying-glass-location text-coral fs-2 mb-3"></i>
+                        <h5 class="fw-bold text-navy">Locate Donors Easily</h5>
+                        <p class="text-muted small mb-0">Make blood donors easier and faster to find during emergencies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card h-100 p-4 text-center shadow-sm">
+                        <i class="fa-solid fa-clock-rotate-left text-coral fs-2 mb-3"></i>
+                        <h5 class="fw-bold text-navy">Reduce Response Time</h5>
+                        <p class="text-muted small mb-0">Minimize the crucial time required to locate suitable matching donors.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card h-100 p-4 text-center shadow-sm">
+                        <i class="fa-solid fa-heart-pulse text-coral fs-2 mb-3"></i>
+                        <h5 class="fw-bold text-navy">Encourage Voluntary Donation</h5>
+                        <p class="text-muted small mb-0">Inspire individuals to regularly and voluntarily donate blood.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="card h-100 p-4 text-center shadow-sm">
+                        <i class="fa-solid fa-laptop-code text-coral fs-2 mb-3"></i>
+                        <h5 class="fw-bold text-navy">Emergency Tech Connection</h5>
+                        <p class="text-muted small mb-0">Use technology to connect patients and donors during medical crises.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="card h-100 p-4 text-center shadow-sm">
+                        <i class="fa-solid fa-bullhorn text-coral fs-2 mb-3"></i>
+                        <h5 class="fw-bold text-navy">Build Community Awareness</h5>
+                        <p class="text-muted small mb-0">Spread awareness regarding the vital importance of blood donation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Meet the Team (Centerpiece) -->
+        <section class="mb-5">
+            <div class="text-center mb-4">
+                <span class="blood-badge mb-2">The Brains Behind Lifeline</span>
+                <h2 class="h2 text-navy fw-bold">Meet the Team</h2>
+                <p class="text-muted">Dedicated individuals collaborating to solve a real-world healthcare challenge.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Sattwik -->
+                <div class="col-lg-6">
+                    <div class="card team-card h-100 p-4 shadow-sm border">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-placeholder flex-shrink-0">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold text-navy mb-1">Sattwik</h4>
+                                <span class="badge bg-secondary text-white">Front-End Developer</span>
+                                <span class="badge bg-secondary text-white">Back-End Developer</span>
+                                <span class="badge bg-danger text-white">Project Developer</span>
+                            </div>
+                        </div>
+                        <h6 class="fw-bold text-navy mt-2">Responsibilities:</h6>
+                        <ul class="text-muted small mb-0">
+                            <li>Developed the website's front-end architecture and user interface.</li>
+                            <li>Worked on the back-end using Python/Django.</li>
+                            <li>Implemented database-related functionality and server-side logic.</li>
+                            <li>Integrated different components of the project.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Anshika Sharma -->
+                <div class="col-lg-6">
+                    <div class="card team-card h-100 p-4 shadow-sm border">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-placeholder flex-shrink-0">
+                                <i class="fa-solid fa-user-code"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold text-navy mb-1">Anshika Sharma</h4>
+                                <span class="badge bg-secondary text-white">Front-End Developer</span>
+                            </div>
+                        </div>
+                        <h6 class="fw-bold text-navy mt-2">Responsibilities:</h6>
+                        <ul class="text-muted small mb-0">
+                            <li>Worked on the website's front-end development.</li>
+                            <li>Contributed to UI design, page structure and user experience.</li>
+                            <li>Helped create a clean and accessible interface.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ashutosh Kashyap -->
+                <div class="col-lg-6">
+                    <div class="card team-card h-100 p-4 shadow-sm border">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-placeholder flex-shrink-0">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold text-navy mb-1">Ashutosh Kashyap</h4>
+                                <span class="badge text-bg-primary text-white" style="background-color: var(--color-blue) !important;">AI/ML Developer</span>
+                            </div>
+                        </div>
+                        <h6 class="fw-bold text-navy mt-2">Responsibilities:</h6>
+                        <ul class="text-muted small mb-0">
+                            <li>Worked on training and developing the AI component of the project.</li>
+                            <li>Assisted with AI-related integration and functionality.</li>
+                            <li>Contributed to making the platform more intelligent and useful.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Anurag Singh -->
+                <div class="col-lg-6">
+                    <div class="card team-card h-100 p-4 shadow-sm border">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-placeholder flex-shrink-0">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold text-navy mb-1">Anurag Singh</h4>
+                                <span class="badge bg-success text-white">Project Support & Motivator</span>
+                            </div>
+                        </div>
+                        <h6 class="fw-bold text-navy mt-2">Responsibilities:</h6>
+                        <ul class="text-muted small mb-0">
+                            <li>Provided motivation and continuous support to the team.</li>
+                            <li>Assisted with miscellaneous project tasks.</li>
+                            <li>Helped coordinate ideas, discussions and project activities.</li>
+                            <li>Contributed wherever additional support was required.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. How We Built It (Behind the Project) -->
+        <section class="card p-4 p-md-5 shadow-sm mb-5">
+            <h2 class="h3 text-navy fw-bold text-center mb-3">Behind the Project</h2>
+            <p class="text-muted text-center max-w-700 mx-auto mb-4">
+                This platform seamlessly combines modern front-end design, secure back-end development, reliable database management, and intelligent AI capabilities.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <div class="tech-badge"><i class="fa-brands fa-html5 text-danger me-2"></i>HTML</div>
+                <div class="tech-badge"><i class="fa-brands fa-css3-alt text-primary me-2"></i>CSS</div>
+                <div class="tech-badge"><i class="fa-brands fa-js text-warning me-2"></i>JavaScript</div>
+                <div class="tech-badge"><i class="fa-brands fa-bootstrap text-purple me-2" style="color:#7952b3;"></i>Bootstrap</div>
+                <div class="tech-badge"><i class="fa-brands fa-python text-info me-2"></i>Python</div>
+                <div class="tech-badge"><i class="fa-solid fa-code text-success me-2"></i>Django</div>
+                <div class="tech-badge"><i class="fa-solid fa-database text-secondary me-2"></i>SQLite / Database</div>
+                <div class="tech-badge"><i class="fa-solid fa-brain text-coral me-2"></i>AI / Machine Learning</div>
+            </div>
+        </section>
+
+        <!-- 6. How It Works -->
+        <section class="mb-5">
+            <h2 class="h3 text-navy fw-bold text-center mb-4">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <span class="step-number">01</span>
+                        <h4 class="fw-bold text-navy mb-2">Register</h4>
+                        <p class="text-muted small mb-0">Donors provide their relevant information and register safely on the platform.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <span class="step-number">02</span>
+                        <h4 class="fw-bold text-navy mb-2">Search</h4>
+                        <p class="text-muted small mb-0">People who need blood can search for suitable donors based on location and blood group.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <span class="step-number">03</span>
+                        <h4 class="fw-bold text-navy mb-2">Connect</h4>
+                        <p class="text-muted small mb-0">The platform helps users identify potential donors so they can proceed with necessary communication.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Our Values -->
+        <section class="mb-5">
+            <h2 class="h3 text-navy fw-bold text-center mb-4">Our Values</h2>
+            <div class="row g-3">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 p-3 text-center shadow-sm">
+                        <i class="fa-solid fa-hand-holding-heart text-coral fs-3 mb-2"></i>
+                        <h5 class="fw-bold text-navy">Humanity</h5>
+                        <p class="text-muted small mb-0">Every contribution can make a difference in saving a life.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 p-3 text-center shadow-sm">
+                        <i class="fa-solid fa-universal-access text-coral fs-3 mb-2"></i>
+                        <h5 class="fw-bold text-navy">Accessibility</h5>
+                        <p class="text-muted small mb-0">Make donor discovery simple and available for everyone in need.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 p-3 text-center shadow-sm">
+                        <i class="fa-solid fa-microchip text-coral fs-3 mb-2"></i>
+                        <h5 class="fw-bold text-navy">Technology</h5>
+                        <p class="text-muted small mb-0">Leverage tech tools to address critical real-world healthcare problems.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100 p-3 text-center shadow-sm">
+                        <i class="fa-solid fa-people-group text-coral fs-3 mb-2"></i>
+                        <h5 class="fw-bold text-navy">Teamwork</h5>
+                        <p class="text-muted small mb-0">Combining diverse skills working together toward one common goal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Project Statistics / Impact Section -->
+        <section class="mb-5">
+            <h2 class="h3 text-navy fw-bold text-center mb-4">Project Statistics</h2>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">999+</div>
+                        <div class="stat-label">Registered Donors</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Blood Groups Covered</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Successful Connections</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Team Members</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Closing CTA -->
+        <section class="hero text-center mb-4" style="background-color: var(--color-light-coral);">
+            <h2 class="h2 text-navy fw-bold mb-3">Be the reason someone gets another chance.</h2>
+            <p class="text-muted fs-5 mb-4" style="max-width: 700px; margin: 0 auto;">
+                Whether you are here to donate blood or find a donor, your participation can help make a difference.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{% url 'donor-registration' %}" class="btn btn-primary btn-lg">Become a Donor</a>
+                <a href="{% url 'user-registration' %}" class="btn btn-outline-navy btn-lg">Find a Donor</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- footer code included here always -->
+    {% include 'common/footer.html' %}
+</body>
+</html>
