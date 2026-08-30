@@ -3,8 +3,9 @@
 pip install django 
 pip install pillow 
 
-
-python manage.py runserver <-- this is to show the ip and to reun the server
+then in terminal open the blood_bank folder and use integrated terminal in it 
+then run the command
+python manage.py runserver <-- this is to show the ip and to run the server
  
 
 pip install cohere 
