@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Blood Request - Lifeline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'common/navbar.html' %}
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card form-card p-4 p-md-5 bg-white">
+                    <div class="text-center mb-4">
+                        <div class="display-5 text-danger mb-2">
+                            <i class="bi bi-hospital"></i>
+                        </div>
+                        <h2 class="fw-bold text-dark">Emergency Blood Assistance Request</h2>
+                        <p class="text-muted small">Fill in the details below. Our AI scoring engine will prioritize the request directly to the hospital admin panel.</p>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags|default:'danger' }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" action="{% url 'patient-registration' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Patient Full Name</label>
+                                <input type="text" name="patient_name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Contact Phone</label>
+                                <input type="tel" name="patient_phone" class="form-control" placeholder="e.g. 9876543210" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Patient / Attendant Email</label>
+                                <input type="email" name="patient_email" class="form-control" placeholder="name@example.com" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Account Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-danger">Required Blood Group</label>
+                                <select name="required_blood_group" class="form-select border-danger" required>
+                                    <option value="" disabled selected>Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Hospital Name</label>
+                                <input type="text" name="hospital" class="form-control" placeholder="e.g. Medanta / CHL Hospital" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Locality / Area in City</label>
+                                <input type="text" name="locality" class="form-control" placeholder="e.g. Vijay Nagar, Palasia" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Clinical Condition & Reason for Urgency</label>
+                                <textarea name="condition" class="form-control" rows="3" placeholder="Describe clinical need (e.g. Severe polytrauma ICU case, emergency bypass surgery, internal bleeding)..." required></textarea>
+                                <div class="form-text text-muted">Include keywords like trauma, ICU, surgery, or immediate transfusion for accurate AI urgency triage.</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Medical Report / Prescription (Optional)</label>
+                                <input type="file" name="medical_report" class="form-control">
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-danger w-100 py-2 fs-5 fw-bold shadow-sm">
+                                    🚨 Submit Emergency Request
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    {% include 'common/common_css.html' %}
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-bg, #F8FAFC);
+        }
+
+        /* CARD STYLING */
+        .glass-card {
+            background: #FFFFFF !important;
+            border: 1px solid var(--color-border, #E2E8F0) !important;
+            border-radius: var(--radius-lg, 12px) !important;
+            box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1)) !important;
+            max-width: 900px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        /* IMAGE */
+        .profile-img {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border: 2px solid var(--color-border, #E2E8F0);
+        }
+
+        /* TEXT */
+        .text-input {
+            color: var(--color-navy, #1E293B);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .label-text {
+            color: var(--color-navy, #1E293B);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'user/user_header.html' %}
+    <div class="main-div">
+        <div class="card shadow-lg border-0 rounded-4  glass-card">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="row g-0">
+                    {% csrf_token %}
+
+                    <!-- Profile Image -->
+                    <div class="col-lg-4 text-center rounded-4 p-4 d-flex flex-column align-items-center justify-content-center border-end">
+
+                        <div class="rounded-4 shadow-sm mb-3">
+
+                            {% if user_key.profile_pic %}
+                            <img src='/media/{{user_key.profile_pic}}' class="img-fluid rounded-4 profile-img"
+                                alt="Profile Picture">
+                            {% else %}
+                            <img src="{% static 'images/avatar-design.png' %}"
+                                class="img-fluid rounded-4 profile-img" alt="Default Profile Picture">
+                            {% endif %}
+
+                        </div>
+                        <label for="profile_pic_input" class="form-label text-navy fw-semibold small mb-2">Change Profile Picture</label>
+
+
+                        <input type="file" name="profile_pic" id="profile_pic_input" class="form-control form-control-sm">
+
+                    </div>
+                    <!-- <label for="change pic"> change your Profile</label>
+                    <input type="file" name="profile_pic"> -->
+
+                    <!-- User Details -->
+                    <div class="col-lg-8">
+
+                        <div class="card-body p-4 p-md-5">
+
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h2 class="fw-bold text-navy h4 mb-0">
+                                    Update Profile
+                                </h2>
+                                <span class="badge bg-danger">User Profile</span>
+                            </div>
+
+                            <hr class="mb-4">
+
+                            <div class="row gy-3">
+
+                                <div class="col-md-12">
+                                    <label class="label-text">Full Name</label>
+                                    <input class="form-control text-input" name="name" value="{{user_key.name}}" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="label-text">Phone Number</label>
+                                    <input class="form-control text-input" name="phone" value="{{user_key.phone}}" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="label-text">Current Address / Locality</label>
+                                    <input class="form-control text-input" name="address" value="{{user_key.address}}" placeholder="Enter your current address" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="label-text">Email Address</label>
+                                    <div class="form-control-plaintext text-navy fw-semibold">{{user_key.email}}</div>
+                                </div>
+
+                            </div>
+
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn btn-primary px-4 py-2">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- footer -->
+    {% include 'common/footer.html' %}
+</body>
+
+</html>

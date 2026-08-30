@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Lifeline</title>
+    {% include 'common/common_css.html' %}
+</head>
+
+<body>
+    {% include 'common/navbar.html' %}
+    {% include 'common/message.html' %}
+
+    <div class="main-div">
+        <!-- Dashboard Welcome Header -->
+        <div class="dashboard-header d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+            <div>
+                <span class="badge bg-danger mb-2">👤 Patient / User Portal</span>
+                <h1 class="h2 text-white fw-bold mb-1">Welcome to Lifeline</h1>
+                <p class="text-white-50 mb-0">Search available blood donors nearby or request emergency blood support.</p>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="{% url 'donor-info' %}" class="btn btn-coral"><i class="fa-solid fa-hand-holding-hand me-2"></i>Find Donors</a>
+                <a href="{% url 'edit-user-details' %}" class="btn btn-outline-light"><i class="fa-solid fa-user-pen me-2"></i>My Profile</a>
+                <a href="{% url 'home-page' %}" class="btn btn-outline-light"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+            </div>
+        </div>
+
+        <!-- Action Cards Grid -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 p-4 shadow-sm text-center">
+                    <div class="fs-1 text-danger mb-3">
+                        <i class="fa-solid fa-magnifying-glass-location"></i>
+                    </div>
+                    <h3 class="h5 text-navy fw-bold mb-2">Search Donors</h3>
+                    <p class="text-muted small mb-4">Browse verified blood donors filtered by blood group and locality.</p>
+                    <a href="{% url 'donor-info' %}" class="btn btn-primary mt-auto">Browse Donor Directory</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 p-4 shadow-sm text-center">
+                    <div class="fs-1 text-danger mb-3">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <h3 class="h5 text-navy fw-bold mb-2">Emergency Assistance</h3>
+                    <p class="text-muted small mb-4">Need urgent blood? Register as a patient or contact nearby registered donors immediately.</p>
+                    <a href="{% url 'user-registration' %}" class="btn btn-outline-navy mt-auto">Post Request / Register</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 p-4 shadow-sm text-center">
+                    <div class="fs-1 text-danger mb-3">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h3 class="h5 text-navy fw-bold mb-2">Account Settings</h3>
+                    <p class="text-muted small mb-4">Update your profile details, contact information, and address preferences.</p>
+                    <a href="{% url 'edit-user-details' %}" class="btn btn-outline-navy mt-auto">Manage Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood Compatibility Information -->
+        <section class="card p-4 shadow-sm mb-4">
+            <h2 class="h5 text-navy fw-bold mb-3"><i class="fa-solid fa-circle-info text-coral me-2"></i>Quick Blood Compatibility Guide</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle mb-0 text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Blood Type</th>
+                            <th>Can Receive From</th>
+                            <th>Can Donate To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="blood-badge">O-</span></td>
+                            <td>O-</td>
+                            <td>Everyone (Universal Donor)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">O+</span></td>
+                            <td>O+, O-</td>
+                            <td>O+, A+, B+, AB+</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">A-</span></td>
+                            <td>A-, O-</td>
+                            <td>A+, A-, AB+, AB-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">A+</span></td>
+                            <td>A+, A-, O+, O-</td>
+                            <td>A+, AB+</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">B-</span></td>
+                            <td>B-, O-</td>
+                            <td>B+, B-, AB+, AB-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">B+</span></td>
+                            <td>B+, B-, O+, O-</td>
+                            <td>B+, AB+</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">AB-</span></td>
+                            <td>AB-, A-, B-, O-</td>
+                            <td>AB+, AB-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge">AB+</span></td>
+                            <td>Everyone (Universal Recipient)</td>
+                            <td>AB+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    {% include 'common/footer.html' %}
+</body>
+</html>

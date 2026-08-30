@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifeline - Home</title>
+    {% include 'common/common_css.html' %}
+</head>
+
+<body>
+    {% include 'common/navbar.html' %}
+    {% include 'common/message.html' %}
+
+    <div class="main-div">
+        <!-- Hero Section -->
+        <section class="hero text-center mb-5">
+            <h1 class="hero-title fw-bold">Blood Donation Portal</h1>
+            <p class="hero-subtitle text-muted fs-5">🩸 Where Donors Meet Those in Need 🩸</p>
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                <a href="{% url 'donor-registration' %}" class="btn btn-primary btn-lg">Register as Donor</a>
+                <a href="{% url 'user-registration' %}" class="btn btn-outline-navy btn-lg">User Registration</a>
+            </div>
+        </section>
+
+        <!-- Emergency Assistance Callout Banner -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-7 col-md-9">
+                <div class="card p-4 shadow-sm border-0 text-center" style="border-radius: 16px; background: #ffffff;">
+                    <div class="mb-3 text-danger fs-1">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <h3 class="fw-bold text-navy mb-2">Emergency Assistance</h3>
+                    <p class="text-muted px-md-4 mb-4">
+                        Need urgent blood? Register as a patient or contact nearby registered donors immediately.
+                    </p>
+                    <div>
+                        <a href="{% url 'patient-registration' %}" class="btn btn-outline-dark fw-bold px-4 py-2 w-75" style="border-radius: 8px;">
+                            Post Request / Register
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Urgent Patient Cases (AI Ranked / Needy Feed) -->
+        <section class="card p-4 shadow-sm mb-5 border-0" style="border-radius: 12px;">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="h4 text-danger fw-bold mb-1">
+                        <i class="fa-solid fa-heart-pulse me-2"></i>Urgent Cases: People in Need
+                    </h2>
+                    <p class="text-muted small mb-0">Direct patient blood requirements awaiting matched donors</p>
+                </div>
+                <a href="{% url 'admin_priority_dashboard' %}" class="btn btn-sm btn-outline-danger fw-bold">
+                    ⚡ View Live AI Queue
+                </a>
+            </div>
+
+            <div class="row g-3">
+                {% for patient in needy_patients %}
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-start border-danger border-4 p-3 bg-light">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold text-navy mb-0">{{ patient.patient_name }}</h5>
+                            <span class="blood-badge">{{ patient.required_blood_group }}</span>
+                        </div>
+                        <p class="text-muted small mb-1">
+                            <i class="fa-solid fa-hospital text-secondary me-1"></i>{{ patient.hospital }}
+                        </p>
+                        <p class="text-muted small mb-2">
+                            <i class="fa-solid fa-location-dot text-danger me-1"></i>{{ patient.locality }}
+                        </p>
+                        <p class="small text-dark mb-3">
+                            <em>"{{ patient.condition|truncatewords:14 }}"</em>
+                        </p>
+                        <div class="mt-auto">
+                            <a href="{% url 'match_donors_for_patient' patient.patient_email %}" class="btn btn-sm btn-danger w-100 fw-bold">
+                                Match Donors Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center py-4">
+                    <i class="fa-solid fa-circle-check text-success fs-2 mb-2"></i>
+                    <p class="text-muted mb-0">No active emergency blood requests pending right now.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Why Blood Donation Matters & What We Offer -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="card h-100 p-4 shadow-sm border-0">
+                    <h2 class="h4 text-navy fw-bold mb-3">Why Blood Donation Matters?</h2>
+                    <p>Blood is needed every day for surgeries, accidents, and medical emergencies. A single blood donation can save up to three lives.</p>
+                    <h5 class="fw-semibold text-navy mt-3">Our platform helps:</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i>Find nearby blood donors</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i>Connect patients with donors instantly</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i>Reduce emergency blood shortages</li>
+                        <li class="mb-0"><i class="fa-solid fa-check text-danger me-2"></i>Promote voluntary blood donation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 p-4 shadow-sm border-0">
+                    <h2 class="h4 text-navy fw-bold mb-3">What We Offer</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3">
+                            <strong>🩸 Find Nearby Donors:</strong> Locate blood donors based on blood group and location.
+                        </li>
+                        <li class="mb-3">
+                            <strong>🚑 Emergency Blood Requests:</strong> Post urgent blood requirements and notify nearby donors.
+                        </li>
+                        <li class="mb-3">
+                            <strong>🤖 AI Chat Assistant:</strong> Get instant guidance about blood donation eligibility and procedures.
+                        </li>
+                        <li class="mb-0">
+                            <strong>🔔 Real-Time Notifications:</strong> Receive alerts for urgent blood requests near you.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Blood Groups -->
+        <section class="card p-4 shadow-sm mb-5 text-center border-0">
+            <h2 class="h4 text-navy fw-bold mb-4">Available Blood Groups</h2>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <span class="blood-badge badge-lg">A+</span>
+                <span class="blood-badge badge-lg">A-</span>
+                <span class="blood-badge badge-lg">B+</span>
+                <span class="blood-badge badge-lg">B-</span>
+                <span class="blood-badge badge-lg">AB+</span>
+                <span class="blood-badge badge-lg">AB-</span>
+                <span class="blood-badge badge-lg">O+</span>
+                <span class="blood-badge badge-lg">O-</span>
+            </div>
+        </section>
+
+        <!-- Registered Donors Table Section -->
+        <section class="card p-4 shadow-sm mb-5 border-0">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="h4 text-navy fw-bold mb-1">Registered Blood Donors</h2>
+                    <p class="text-muted small mb-0">Live list of active registered donors from our database</p>
+                </div>
+                <a href="{% url 'donor-registration' %}" class="btn btn-sm btn-primary">Join as Donor</a>
+            </div>
+
+            {% if donors %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Blood Group</th>
+                            <th scope="col">Locality</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Last Donation Date</th>
+                            <th scope="col">Health Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donor in donors %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="fw-semibold text-navy">{{ donor.name }}</td>
+                            <td><span class="blood-badge">{{ donor.blood_group }}</span></td>
+                            <td>{{ donor.locality|default:"Not specified" }}</td>
+                            <td><a href="tel:{{ donor.phone }}" class="text-decoration-none"><i class="fa-solid fa-phone me-1 text-success"></i>{{ donor.phone }}</a></td>
+                            <td>
+                                {% if donor.never_donated %}
+                                    <span class="badge bg-secondary">Never Donated</span>
+                                {% elif donor.last_donation_date %}
+                                    {{ donor.last_donation_date }}
+                                {% else %}
+                                    <span class="text-muted">N/A</span>
+                                {% endif %}
+                            </td>
+                            <td><span class="small text-muted">{{ donor.health_conditions|default:"None"|truncatechars:30 }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-4">
+                <i class="fa-solid fa-user-slash text-muted fs-1 mb-2"></i>
+                <p class="text-muted mb-0">No donors registered yet. Be the first hero to register!</p>
+            </div>
+            {% endif %}
+        </section>
+
+        <!-- Our Impact -->
+        <section class="mb-5">
+            <h2 class="h4 text-navy fw-bold text-center mb-4">Our Impact</h2>
+            <div class="row g-3 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">{{ total_donors }}</div>
+                        <div class="stat-label">Registered Donors</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Successful Donations</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Emergency Requests</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card p-3">
+                        <div class="stat-number">60+</div>
+                        <div class="stat-label">Partner Hospitals</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="card p-4 shadow-sm mb-4 border-0">
+            <h3 class="h4 text-navy fw-bold mb-4 text-center">What Our Users Say</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded border h-100">
+                        <p class="fst-italic text-muted mb-2">"This platform saved my life! I found a donor within an hour during a medical emergency."</p>
+                        <span class="fw-semibold text-navy">— John D.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded border h-100">
+                        <p class="fst-italic text-muted mb-2">"The real-time notifications are a game-changer!"</p>
+                        <span class="fw-semibold text-navy">— Sarah M.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded border h-100">
+                        <p class="fst-italic text-muted mb-2">"The registration process was so simple, and I successfully saved a life."</p>
+                        <span class="fw-semibold text-navy">— Blood Donor</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    {% include 'common/footer.html' %}
+</body>
+</html>
