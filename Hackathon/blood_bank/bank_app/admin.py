@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import UserDetail, DonorDetail, PatientDetails
 
-admin.site.site_header = "Khun Chusai Administration"
+admin.site.site_header = "BloodBridge Administration"
 admin.site.site_title = "Admin Portal"
 admin.site.index_title = "Blood Bank Management"
 
