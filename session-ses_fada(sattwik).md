@@ -877,7 +877,7 @@ Let's update `user/donor_info.html` to use `{% include 'user/user_header.html' %
 
 ## Assistant (Auto · gemini/gemini-3.7-flash · 7.5s)
 
-Let's update `common/navbar.html` to use dynamic template tags and clean branding (`Lifeline` instead of `Khun Chusai`).
+Let's update `common/navbar.html` to use dynamic template tags and clean branding (`Lifeline`).
 Let's read `common/navbar.html`.
 
 **Tool: read**
