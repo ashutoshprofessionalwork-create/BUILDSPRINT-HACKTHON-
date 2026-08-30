@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details - Lifeline</title>
+    {% include 'common/common_css.html' %}
+</head>
+
+<body>
+    {% include 'donor/donor_header.html' %}
+    {% include 'common/message.html' %}
+
+    <div class="main-div">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <div>
+                <span class="badge bg-danger mb-2">🏥 Urgent Requests</span>
+                <h1 class="h3 text-navy fw-bold mb-1">Patient Details & Urgent Requests</h1>
+                <p class="text-muted small mb-0">List of patients requiring immediate blood donation</p>
+            </div>
+            <a href="{% url 'donor-home' %}" class="btn btn-outline-navy btn-sm">
+                <i class="fa-solid fa-arrow-left me-1"></i>Back to Dashboard
+            </a>
+        </div>
+
+        <div class="card p-4 shadow-sm">
+            {% if patients %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Patient Name</th>
+                            <th scope="col">Blood Needed</th>
+                            <th scope="col">Hospital</th>
+                            <th scope="col">Locality</th>
+                            <th scope="col">Contact Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Condition / Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for patient in patients %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="fw-semibold text-navy">{{ patient.patient_name }}</td>
+                            <td><span class="blood-badge">{{ patient.required_blood_group }}</span></td>
+                            <td>{{ patient.hospital|default:"N/A" }}</td>
+                            <td>{{ patient.locality|default:"Not specified" }}</td>
+                            <td>
+                                <a href="tel:{{ patient.patient_phone }}" class="text-decoration-none">
+                                    <i class="fa-solid fa-phone me-1 text-success"></i>{{ patient.patient_phone }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="mailto:{{ patient.patient_email }}" class="text-decoration-none text-navy">
+                                    <i class="fa-solid fa-envelope me-1 text-primary"></i>{{ patient.patient_email }}
+                                </a>
+                            </td>
+                            <td><span class="small text-muted">{{ patient.condition|default:"None"|truncatechars:40 }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-5">
+                <i class="fa-solid fa-circle-check text-success fs-1 mb-3"></i>
+                <h5 class="text-navy fw-bold">No Active Requests</h5>
+                <p class="text-muted mb-0">There are currently no urgent patient blood requests in the database.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include 'common/footer.html' %}
+</body>
+</html>

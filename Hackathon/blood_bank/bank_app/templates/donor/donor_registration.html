@@ -11,6 +11,7 @@
 
 <body>
     {% include 'common/navbar.html' %}
+    {% include 'common/message.html' %}
 
     <div class="main-div d-flex justify-content-center align-items-center">
         <div class="registration-card card p-4 shadow-sm" style="max-width: 550px; width: 100%;">
@@ -69,6 +70,11 @@
                 <div class="mb-3">
                     <label for="locality" class="form-label fw-semibold">Locality / Area</label>
                     <input type="text" id="address" name="address" class="form-control" placeholder="Enter your city/area" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="donor-password" class="form-label fw-semibold">Password</label>
+                    <input type="password" id="donor-password" name="password" class="form-control" placeholder="Create Password" required minlength="8">
                 </div>
 
                 <div class="mb-4">

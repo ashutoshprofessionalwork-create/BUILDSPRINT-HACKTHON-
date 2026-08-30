@@ -78,14 +78,14 @@ a:hover {
    3. NAVBAR STYLING
    ========================================================== */
 .navbar, nav.navbar, header nav {
-  background-color: var(--color-navy) !important;
+  background-color: var(--color-white) !important;
   padding: 0.9rem 1.5rem;
-  box-shadow: var(--shadow-md);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar-brand, nav .logo, header .brand {
-  color: var(--color-white) !important;
+  color: var(--color-navy) !important;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.4rem;
@@ -99,7 +99,7 @@ a:hover {
 }
 
 .navbar-nav .nav-link, nav a {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: var(--color-navy) !important;
   font-weight: 500;
   font-size: 0.95rem;
   padding: 0.5rem 1rem !important;
@@ -108,15 +108,15 @@ a:hover {
 }
 
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus, nav a:hover {
-  color: var(--color-white) !important;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-coral) !important;
+  background-color: var(--color-light-coral);
   transform: translateY(-1px);
 }
 
 .navbar-nav .nav-link.active {
-  color: var(--color-white) !important;
+  color: var(--color-coral) !important;
   font-weight: 600;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--color-light-coral);
 }
 
 /* Navbar CTA button */
@@ -138,12 +138,12 @@ a:hover {
 }
 
 .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: var(--color-border) !important;
   padding: 0.4rem 0.6rem;
 }
 
 .navbar-toggler-icon {
-  filter: invert(1);
+  filter: none;
 }
 
 /* Dropdown menus */

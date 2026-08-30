@@ -17,17 +17,19 @@ class DonorDetail(models.Model):
     name = models.CharField(max_length=45)
     phone = models.CharField(max_length=13)
     email = models.EmailField(max_length=45, primary_key=True)
+    password = models.CharField(max_length=20, default="")
     blood_group = models.CharField(max_length=5)
     locality = models.CharField(max_length=100, default="")
-    last_donation_date = models.DateField(null=True, blank=True)
+    last_donation_date = models.DateField(blank=True, null=True)
     never_donated = models.BooleanField(default=False)
     health_conditions = models.TextField(blank=True, null=True)
 
 
-class PatientDetail(models.Model):
+class PatientDetails(models.Model):
     patient_name = models.CharField(max_length=45)
     patient_phone = models.CharField(max_length=13)
     patient_email = models.EmailField(max_length=45, primary_key=True)
+    password=models.CharField(max_length=20)
     required_blood_group = models.CharField(max_length=5)
     locality = models.CharField(max_length=100, default="")
     condition = models.TextField(blank=True, null=True)
