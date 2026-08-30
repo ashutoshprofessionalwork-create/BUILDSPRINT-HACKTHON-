@@ -1,25 +1,30 @@
 <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand text-navy fw-bold" href="{% url 'donor-home' %}">
-      🩸 <span class="text-navy">Lifeline</span> <span class="badge bg-danger ms-1 fs-6">Donor</span>
+  <div class="container-fluid px-4">
+    <a class="navbar-brand text-navy fw-bold fs-4 d-flex align-items-center gap-2" href="{% url 'donor-home' %}">
+      <span>🩸</span>
+      <span class="text-navy">Lifeline</span>
+      <span class="badge bg-danger ms-1 fs-6 fw-semibold">Donor Portal</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#donorNavbar" aria-controls="donorNavbar" aria-label="Toggle navigation">
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#donorNavbar" aria-controls="donorNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="donorNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center ms-lg-3 gap-lg-1">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'donor-home' %}">Home</a>
+          <a class="nav-link px-3 fw-medium" href="{% url 'donor-home' %}"><i class="fa-solid fa-gauge-high me-1"></i>Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'user-info' %}">Patient Requests</a>
+          <a class="nav-link px-3 fw-medium" href="{% url 'user-info' %}"><i class="fa-solid fa-heart-pulse me-1"></i>Patient Requests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'edit-donor-details' %}">Edit Details</a>
+          <a class="nav-link px-3 fw-medium" href="{% url 'edit-donor-details' %}"><i class="fa-solid fa-user-gear me-1"></i>Edit Profile</a>
+        </li>
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a class="btn btn-outline-danger btn-sm px-3 fw-bold shadow-sm" href="{% url 'admin_priority_dashboard' %}">⚡ AI Triage Queue</a>
         </li>
       </ul>
-      <div class="d-flex align-items-center gap-3">
-        <a href="{% url 'home-page' %}" class="btn btn-outline-danger btn-sm">
+      <div class="d-flex align-items-center gap-2 ms-lg-3">
+        <a href="{% url 'home-page' %}" class="btn btn-outline-danger btn-sm px-3 fw-semibold">
           <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
         </a>
       </div>

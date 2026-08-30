@@ -53,9 +53,6 @@
                     </h2>
                     <p class="text-muted small mb-0">Direct patient blood requirements awaiting matched donors</p>
                 </div>
-                <a href="{% url 'admin_priority_dashboard' %}" class="btn btn-sm btn-outline-danger fw-bold">
-                    ⚡ View Live AI Queue
-                </a>
             </div>
 
             <div class="row g-3">
@@ -159,32 +156,32 @@
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
                             <th scope="col">Blood Group</th>
                             <th scope="col">Locality</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Last Donation Date</th>
-                            <th scope="col">Health Notes</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col">Contact</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for donor in donors %}
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
-                            <td class="fw-semibold text-navy">{{ donor.name }}</td>
                             <td><span class="blood-badge">{{ donor.blood_group }}</span></td>
                             <td>{{ donor.locality|default:"Not specified" }}</td>
-                            <td><a href="tel:{{ donor.phone }}" class="text-decoration-none"><i class="fa-solid fa-phone me-1 text-success"></i>{{ donor.phone }}</a></td>
                             <td>
                                 {% if donor.never_donated %}
-                                    <span class="badge bg-secondary">Never Donated</span>
+                                    <span class="badge bg-success">Ready to Donate</span>
                                 {% elif donor.last_donation_date %}
-                                    {{ donor.last_donation_date }}
+                                    <span class="badge bg-info text-dark">Active Donor</span>
                                 {% else %}
-                                    <span class="text-muted">N/A</span>
+                                    <span class="badge bg-success">Ready to Donate</span>
                                 {% endif %}
                             </td>
-                            <td><span class="small text-muted">{{ donor.health_conditions|default:"None"|truncatechars:30 }}</span></td>
+                            <td>
+                                <a href="{% url 'user-login' %}" class="btn btn-sm btn-outline-danger fw-semibold">
+                                    <i class="fa-solid fa-lock me-1"></i>Login to Contact
+                                </a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

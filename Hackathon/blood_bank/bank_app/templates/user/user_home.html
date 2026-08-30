@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    {% include 'common/navbar.html' %}
+    {% include 'user/user_header.html' %}
     {% include 'common/message.html' %}
 
     <div class="main-div">
@@ -22,9 +22,7 @@
                 <p class="text-white-50 mb-0">Search available blood donors nearby or request emergency blood support.</p>
             </div>
             <div class="d-flex gap-2">
-                <a href="{% url 'donor-info' %}" class="btn btn-coral"><i class="fa-solid fa-hand-holding-hand me-2"></i>Find Donors</a>
-                <a href="{% url 'edit-user-details' %}" class="btn btn-outline-light"><i class="fa-solid fa-user-pen me-2"></i>My Profile</a>
-                <a href="{% url 'home-page' %}" class="btn btn-outline-light"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+                <a href="{% url 'edit-user-details' %}" class="btn btn-coral"><i class="fa-solid fa-user-pen me-2"></i>My Profile</a>
             </div>
         </div>
 
@@ -48,7 +46,7 @@
                     </div>
                     <h3 class="h5 text-navy fw-bold mb-2">Emergency Assistance</h3>
                     <p class="text-muted small mb-4">Need urgent blood? Register as a patient or contact nearby registered donors immediately.</p>
-                    <a href="{% url 'user-registration' %}" class="btn btn-outline-navy mt-auto">Post Request / Register</a>
+                    <a href="{% url 'patient-registration' %}" class="btn btn-outline-navy mt-auto">Post Request / Register</a>
                 </div>
             </div>
 
