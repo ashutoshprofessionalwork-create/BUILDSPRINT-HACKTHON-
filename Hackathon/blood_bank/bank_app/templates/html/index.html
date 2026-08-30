@@ -24,7 +24,6 @@
             </div>
         </section>
 
-<<<<<<< HEAD
         <!-- Emergency Assistance Callout Banner -->
         <div class="row justify-content-center mb-5">
             <div class="col-lg-7 col-md-9">
@@ -54,9 +53,6 @@
                     </h2>
                     <p class="text-muted small mb-0">Direct patient blood requirements awaiting matched donors</p>
                 </div>
-                <a href="{% url 'admin_priority_dashboard' %}" class="btn btn-sm btn-outline-danger fw-bold">
-                    ⚡ View Live AI Queue
-                </a>
             </div>
 
             <div class="row g-3">
@@ -96,12 +92,6 @@
         <div class="row g-4 mb-5">
             <div class="col-md-6">
                 <div class="card h-100 p-4 shadow-sm border-0">
-=======
-        <!-- Why Blood Donation Matters & What We Offer -->
-        <div class="row g-4 mb-5">
-            <div class="col-md-6">
-                <div class="card h-100 p-4 shadow-sm">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
                     <h2 class="h4 text-navy fw-bold mb-3">Why Blood Donation Matters?</h2>
                     <p>Blood is needed every day for surgeries, accidents, and medical emergencies. A single blood donation can save up to three lives.</p>
                     <h5 class="fw-semibold text-navy mt-3">Our platform helps:</h5>
@@ -115,11 +105,7 @@
             </div>
 
             <div class="col-md-6">
-<<<<<<< HEAD
                 <div class="card h-100 p-4 shadow-sm border-0">
-=======
-                <div class="card h-100 p-4 shadow-sm">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
                     <h2 class="h4 text-navy fw-bold mb-3">What We Offer</h2>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-3">
@@ -140,11 +126,7 @@
         </div>
 
         <!-- Available Blood Groups -->
-<<<<<<< HEAD
         <section class="card p-4 shadow-sm mb-5 text-center border-0">
-=======
-        <section class="card p-4 shadow-sm mb-5 text-center">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
             <h2 class="h4 text-navy fw-bold mb-4">Available Blood Groups</h2>
             <div class="d-flex flex-wrap justify-content-center gap-3">
                 <span class="blood-badge badge-lg">A+</span>
@@ -159,11 +141,7 @@
         </section>
 
         <!-- Registered Donors Table Section -->
-<<<<<<< HEAD
         <section class="card p-4 shadow-sm mb-5 border-0">
-=======
-        <section class="card p-4 shadow-sm mb-5">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                 <div>
                     <h2 class="h4 text-navy fw-bold mb-1">Registered Blood Donors</h2>
@@ -178,32 +156,32 @@
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
                             <th scope="col">Blood Group</th>
                             <th scope="col">Locality</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Last Donation Date</th>
-                            <th scope="col">Health Notes</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col">Contact</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for donor in donors %}
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
-                            <td class="fw-semibold text-navy">{{ donor.name }}</td>
                             <td><span class="blood-badge">{{ donor.blood_group }}</span></td>
                             <td>{{ donor.locality|default:"Not specified" }}</td>
-                            <td><a href="tel:{{ donor.phone }}" class="text-decoration-none"><i class="fa-solid fa-phone me-1 text-success"></i>{{ donor.phone }}</a></td>
                             <td>
                                 {% if donor.never_donated %}
-                                    <span class="badge bg-secondary">Never Donated</span>
+                                    <span class="badge bg-success">Ready to Donate</span>
                                 {% elif donor.last_donation_date %}
-                                    {{ donor.last_donation_date }}
+                                    <span class="badge bg-info text-dark">Active Donor</span>
                                 {% else %}
-                                    <span class="text-muted">N/A</span>
+                                    <span class="badge bg-success">Ready to Donate</span>
                                 {% endif %}
                             </td>
-                            <td><span class="small text-muted">{{ donor.health_conditions|default:"None"|truncatechars:30 }}</span></td>
+                            <td>
+                                <a href="{% url 'user-login' %}" class="btn btn-sm btn-outline-danger fw-semibold">
+                                    <i class="fa-solid fa-lock me-1"></i>Login to Contact
+                                </a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -249,11 +227,7 @@
         </section>
 
         <!-- Testimonials -->
-<<<<<<< HEAD
         <section class="card p-4 shadow-sm mb-4 border-0">
-=======
-        <section class="card p-4 shadow-sm mb-4">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
             <h3 class="h4 text-navy fw-bold mb-4 text-center">What Our Users Say</h3>
             <div class="row g-3">
                 <div class="col-md-4">
@@ -278,11 +252,7 @@
         </section>
     </div>
 
-<<<<<<< HEAD
     <!-- Footer -->
-=======
-    <!-- footer code included here always -->
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
     {% include 'common/footer.html' %}
 </body>
 </html>

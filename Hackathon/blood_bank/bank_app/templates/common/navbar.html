@@ -1,69 +1,40 @@
 <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Khun Chusai</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand text-navy fw-bold fs-4 d-flex align-items-center gap-2" href="{% url 'home-page' %}">
+      <span>🩸</span>
+      <span class="text-navy">Lifeline</span>
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<<<<<<< HEAD
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-=======
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
+    <div class="collapse navbar-collapse" id="publicNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link px-3 fw-medium" href="{% url 'home-page' %}"><i class="fa-solid fa-house me-1"></i>Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/aboutUS/">About Us</a>
+          <a class="nav-link px-3 fw-medium" href="{% url 'aboutUS' %}"><i class="fa-solid fa-circle-info me-1"></i>About Us</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Registrations
+          <a class="nav-link dropdown-toggle px-3 fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user-plus me-1"></i>Register
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/user-registration/">User</a></li>
-            <li><a class="dropdown-item" href="/donor-registration/">Donor</a></li>
-<<<<<<< HEAD
+          <ul class="dropdown-menu border-0 shadow-sm">
+            <li><a class="dropdown-item py-2" href="{% url 'user-registration' %}"><i class="fa-solid fa-user me-2 text-primary"></i>As User / Patient</a></li>
+            <li><a class="dropdown-item py-2" href="{% url 'donor-registration' %}"><i class="fa-solid fa-hand-holding-heart me-2 text-danger"></i>As Blood Donor</a></li>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
-=======
-            <li><hr class="dropdown-divider"></li>
-            <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-          </ul>
-        </li>
-
-         <li class="nav-item dropdown">
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Logins
+          <a class="nav-link dropdown-toggle px-3 fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-right-to-bracket me-1"></i>Login
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/user-login/">User</a></li>
-            <li><a class="dropdown-item" href="/donor-login/">Donor</a></li>
-<<<<<<< HEAD
+          <ul class="dropdown-menu border-0 shadow-sm">
+            <li><a class="dropdown-item py-2" href="{% url 'user-login' %}"><i class="fa-solid fa-user-check me-2 text-primary"></i>User Login</a></li>
+            <li><a class="dropdown-item py-2" href="{% url 'donor-login' %}"><i class="fa-solid fa-heart-circle-check me-2 text-danger"></i>Donor Login</a></li>
           </ul>
-        </li>
-
-        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-          <a class="btn btn-danger btn-sm text-white px-3 fw-bold shadow-sm" href="/priority-queue/">⚡ AI Priority Queue</a>
-=======
-            <li><hr class="dropdown-divider"></li>
-            <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-          </ul>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

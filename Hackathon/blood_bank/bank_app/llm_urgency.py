@@ -8,8 +8,8 @@ from .scoring import priority_score
 from .matching import find_match
 
 # Initialize Cohere Client
-COHERE_API_KEY = "cohere_dx8d4pfSVaNwwNmQTd2725GcdzeAJT3VbcOehSvX492Xzn"  # Replace with your key securely
-co = cohere.Client(COHERE_API_KEY)
+API_KEY = "sk_live_3f88fbbf3a0d_qfloNH58rXpnvxT5ks6byIENN8T25ydeap-34tpztUY"  # Replace with your key securely
+co = cohere.Client(API_KEY)
 
 
 def extract_cohere_urgency(notes: str) -> dict:

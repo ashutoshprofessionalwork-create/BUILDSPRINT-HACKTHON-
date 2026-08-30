@@ -1,51 +1,33 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import UserDetail, DonorDetail, PatientDetails
 from django.contrib import messages
 from django.utils import timezone
+import datetime
 from .scoring import priority_score
-from .matching import find_match
+from .matching import find_match, COMPATIBILITY
 from .llm_urgency import extract_cohere_urgency
-=======
-from django.shortcuts import render, redirect
-from .models import UserDetail, DonorDetail, PatientDetails
-from django.contrib import messages
-from django.utils import timezone
 
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
-
-# Create your views here.
 
 def index(request):
     donors = DonorDetail.objects.all()
     total_donors = donors.count()
     
-<<<<<<< HEAD
     # Distinct blood groups available from donors
     available_blood_groups = donors.values_list('blood_group', flat=True).distinct()
     
-    # Active requests to display on homepage
-    needy_patients = PatientDetails.objects.all()
+    # Active requests to display on homepage (approved patients only)
+    needy_patients = PatientDetails.objects.filter(is_approved=True)
     
-=======
-    # Get distinct blood groups available in DonorDetail
-    available_blood_groups = donors.values_list('blood_group', flat=True).distinct()
-    
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
     context = {
         'donors': donors,
         'total_donors': total_donors,
         'available_blood_groups': available_blood_groups,
-<<<<<<< HEAD
         'needy_patients': needy_patients,
-=======
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
     }
     return render(request, 'html/index.html', context)
 
 
 def user_registration(request):
-<<<<<<< HEAD
     if request.method == "POST":
         name = request.POST.get('name', '')
         phone = request.POST.get('phone', '')
@@ -53,17 +35,6 @@ def user_registration(request):
         address = request.POST.get('address', '')
         password = request.POST.get('password', '')
         blood_group = request.POST.get('blood_group', '')
-=======
-    if request.method == "GET":
-        return render(request, 'user/user_registration.html')
-    if request.method == "POST":
-        name = request.POST['name']
-        phone = request.POST['phone']
-        email = request.POST['email']
-        address = request.POST['address']
-        password = request.POST['password']
-        blood_group = request.POST['blood_group']
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
         profile_pic = request.FILES.get('profile_pic')
         
         if profile_pic and not profile_pic.name.lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".webp")):
@@ -71,10 +42,6 @@ def user_registration(request):
             return redirect("user-registration")
 
         email_list = UserDetail.objects.filter(email=email)
-<<<<<<< HEAD
-=======
-        # check email existence before registering
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
         if email_list.exists():
             messages.error(request, "The Email is already registered, please try another one")
             return redirect("user-registration")
@@ -91,7 +58,6 @@ def user_registration(request):
             u.save()
             messages.success(request, "User registered successfully!")
             return redirect('user-login')
-<<<<<<< HEAD
             
     return render(request, 'user/user_registration.html')
 
@@ -104,20 +70,6 @@ def donor_registration(request):
         password = request.POST.get('password', '')
         locality = request.POST.get('address', '') or request.POST.get('locality', '')
         blood_group = request.POST.get('blood_group', '')
-=======
-
-
-def donor_registration(request):
-    if request.method == "GET":
-        return render(request, 'donor/donor_registration.html')
-    if request.method == "POST":
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
-        password = request.POST.get('password', '')
-        locality = request.POST.get('address', '') or request.POST.get('locality', '')
-        blood_group = request.POST.get('blood_group')
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
         last_donation_date = request.POST.get('last_donation_date') or None
         never_donated = request.POST.get('never_donated') == 'on'
         health_conditions = request.POST.get('health_conditions', '')
@@ -141,7 +93,6 @@ def donor_registration(request):
             d.save()
             messages.success(request, "Donor registered successfully!")
             return redirect("donor-login")
-<<<<<<< HEAD
             
     return render(request, 'donor/donor_registration.html')
 
@@ -187,17 +138,13 @@ def approve_patient(request, patient_email):
     Admin verification action that marks patient request verified.
     """
     patient = get_object_or_404(PatientDetails, patient_email=patient_email)
+    patient.is_approved = True
+    patient.save()
     messages.success(request, f"Patient request for {patient.patient_name} verified!")
     return redirect('admin_priority_dashboard')
 
 
 def user_login(request):
-=======
-
-def user_login(request):
-    if request.method == "GET":
-        return render(request, 'user/user_login.html')
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
     if request.method == "POST":
         email = request.POST.get('email', '') or request.POST.get('username', '')
         password = request.POST.get('password', '')
@@ -210,18 +157,11 @@ def user_login(request):
         else:
             messages.error(request, "Invalid email or password")
             return redirect('user-login')
-<<<<<<< HEAD
             
     return render(request, 'user/user_login.html')
 
 
 def donor_login(request):
-=======
-
-def donor_login(request):
-    if request.method == "GET":
-        return render(request, 'donor/donor_login.html')
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
     if request.method == "POST":
         email = request.POST.get('email', '')
         password = request.POST.get('password', '')
@@ -234,12 +174,9 @@ def donor_login(request):
         else:
             messages.error(request, "Invalid email or password")
             return redirect('donor-login')
-<<<<<<< HEAD
             
     return render(request, 'donor/donor_login.html')
 
-=======
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
 
 def donor_home(request):
     donor_email = request.session.get('session_key')
@@ -247,7 +184,7 @@ def donor_home(request):
     if donor_email:
         current_donor = DonorDetail.objects.filter(email=donor_email).first()
 
-    patient_requests = PatientDetails.objects.all()
+    patient_requests = PatientDetails.objects.filter(is_approved=True)
 
     context = {
         'donor': current_donor,
@@ -256,50 +193,57 @@ def donor_home(request):
     }
     return render(request, 'donor/donor_home.html', context)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
 def user_home(request):
     user_email = request.session.get('session_key')
     current_user = None
     if user_email:
         current_user = UserDetail.objects.filter(email=user_email).first()
 
-    available_donors = DonorDetail.objects.all()
+    # Filter donatable donors: either never donated or last donation was >= 90 days ago
+    cutoff_date = timezone.now().date() - datetime.timedelta(days=90)
+    all_donors = DonorDetail.objects.all()
+    eligible_donors = [
+        d for d in all_donors
+        if d.never_donated or d.last_donation_date is None or d.last_donation_date <= cutoff_date
+    ]
 
     context = {
         'user': current_user,
-        'available_donors': available_donors,
-        'total_donors': available_donors.count(),
+        'available_donors': eligible_donors,
+        'total_donors': len(eligible_donors),
     }
     return render(request, 'user/user_home.html', context)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
 def donor_info(request):
-    donors = DonorDetail.objects.all()
-    return render(request, 'user/donor_info.html', {'donors': donors})
+    user_email = request.session.get('session_key')
+    current_user = UserDetail.objects.filter(email=user_email).first() if user_email else None
 
-<<<<<<< HEAD
+    cutoff_date = timezone.now().date() - datetime.timedelta(days=90)
+    all_donors = DonorDetail.objects.all()
+    eligible_donors = [
+        d for d in all_donors
+        if d.never_donated or d.last_donation_date is None or d.last_donation_date <= cutoff_date
+    ]
 
-=======
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
+    # If user is logged in and has a blood group, filter donors by compatibility
+    if current_user and current_user.blood_group:
+        user_blood = current_user.blood_group.upper()
+        compatible_groups = COMPATIBILITY.get(user_blood, [user_blood])
+        eligible_donors = [d for d in eligible_donors if d.blood_group.upper() in compatible_groups]
+
+    return render(request, 'user/donor_info.html', {'donors': eligible_donors})
+
+
 def user_info(request):
-    patients = PatientDetails.objects.all()
+    patients = PatientDetails.objects.filter(is_approved=True)
     return render(request, 'donor/user_info.html', {'patients': patients})
 
-<<<<<<< HEAD
 
 def aboutUS(request):
     return render(request, 'html/abouUS.html')
 
-=======
-def aboutUS(request):
-    return render(request,'html/abouUS.html')
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
 
 def user_edit(request):
     user_email = request.session.get('session_key')
@@ -325,10 +269,7 @@ def user_edit(request):
 
     return render(request, 'user/edit_details.html', {'user_key': user})    
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
 def donor_edit(request):
     donor_email = request.session.get('session_key')
     if not donor_email:
@@ -351,7 +292,6 @@ def donor_edit(request):
     return render(request, 'donor/edit_details.html', {'donor_key': donor})    
 
 
-<<<<<<< HEAD
 # --- AI PRIORITIZER & MATCHING VIEWS ---
 
 def admin_priority_dashboard(request):
@@ -429,6 +369,3 @@ def match_donors_for_patient(request, patient_email):
         "patient": patient,
         "matched_donors": matched_donors
     })
-=======
-
->>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4

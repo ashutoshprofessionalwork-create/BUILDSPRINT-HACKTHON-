@@ -1,3 +1,56 @@
-<div class="container-fluid" style="height: 30px ; background: black; margin: auto; text-align: center;">
-    <span style="color: antiquewhite;"> created by team</span>
-</div>
+<footer class="text-white pt-5 pb-3 border-top mt-auto" style="background-color: var(--color-navy, #102A43);">
+  <div class="container" style="max-width: 1200px;">
+    <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+      <!-- Brand Column -->
+      <div class="col-lg-4 col-md-6">
+        <h4 class="fw-bold text-white mb-3 d-flex align-items-center gap-2">
+          <span>🩸</span> Lifeline
+        </h4>
+        <p class="small mb-3" style="color: #9FB3C8;">
+          A real-time emergency blood donation platform powered by AI priority scoring and hyperlocal donor matching. Connecting donors with patients when every second counts.
+        </p>
+        <div class="d-flex gap-3 fs-5">
+          <a href="#" class="text-decoration-none" style="color: #9FB3C8;"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="text-decoration-none" style="color: #9FB3C8;"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="text-decoration-none" style="color: #9FB3C8;"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6 col-6">
+        <h6 class="fw-bold text-white text-uppercase tracking-wider mb-3">Quick Links</h6>
+        <ul class="list-unstyled mb-0 small">
+          <li class="mb-2"><a href="{% url 'home-page' %}" class="text-decoration-none" style="color: #9FB3C8;">Home</a></li>
+          <li class="mb-2"><a href="{% url 'aboutUS' %}" class="text-decoration-none" style="color: #9FB3C8;">About Us</a></li>
+          <li class="mb-2"><a href="{% url 'user-login' %}" class="text-decoration-none" style="color: #9FB3C8;">User Login</a></li>
+          <li class="mb-2"><a href="{% url 'donor-login' %}" class="text-decoration-none" style="color: #9FB3C8;">Donor Login</a></li>
+        </ul>
+      </div>
+
+      <!-- Features -->
+      <div class="col-lg-3 col-md-6 col-6">
+        <h6 class="fw-bold text-white text-uppercase tracking-wider mb-3">Features</h6>
+        <ul class="list-unstyled mb-0 small">
+          <li class="mb-2"><a href="{% url 'patient-registration' %}" class="text-decoration-none" style="color: #9FB3C8;">Emergency Request</a></li>
+          <li class="mb-2"><a href="{% url 'donor-registration' %}" class="text-decoration-none" style="color: #9FB3C8;">Become a Donor</a></li>
+          <li class="mb-2"><a href="{% url 'admin_priority_dashboard' %}" class="text-decoration-none" style="color: #9FB3C8;">AI Triage Engine</a></li>
+        </ul>
+      </div>
+
+      <!-- Emergency Support -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="fw-bold text-white text-uppercase tracking-wider mb-3">Emergency Support</h6>
+        <p class="small mb-2" style="color: #9FB3C8;"><i class="fa-solid fa-phone me-2 text-danger"></i>24/7 Helpline: 1800-LIFELINE</p>
+        <p class="small mb-0" style="color: #9FB3C8;"><i class="fa-solid fa-envelope me-2 text-danger"></i>support@lifeline-blood.org</p>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Credit -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 small text-center text-md-start" style="color: #829AB1;">
+      <p class="mb-1 mb-md-0">&copy; 2026 Lifeline Blood Donation Portal. All rights reserved.</p>
+      <p class="mb-0 fw-semibold text-white">
+        Created by Team: <span class="badge bg-danger px-2 py-1 fs-6">EMPTY LIST</span>
+      </p>
+    </div>
+  </div>
+</footer>
