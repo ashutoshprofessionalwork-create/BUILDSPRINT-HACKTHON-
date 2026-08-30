@@ -1,4 +1,4 @@
-# Lifeline - Smart Emergency Blood Donation & Triage Network
+# BloodBridge - Smart Emergency Blood Donation & Triage Network
 
 Lifeline is a full-stack emergency healthcare web platform built with Django, SQLite, and AI triage scoring. It bridges the critical response gap during medical emergencies by dynamically matching verified blood donors with patients based on clinical urgency, blood compatibility, and geographic proximity.
 
