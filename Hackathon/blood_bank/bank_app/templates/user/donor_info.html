@@ -25,6 +25,38 @@
             </a>
         </div>
 
+        <!-- Search & Location Filter Form -->
+        <div class="card p-3 shadow-sm mb-4">
+            <form method="GET" action="{% url 'donor-info' %}" class="row g-3 align-items-center">
+                <div class="col-md-5">
+                    <label class="form-label fw-semibold text-navy mb-1"><i class="fa-solid fa-location-dot me-1 text-danger"></i>Locality / Area</label>
+                    <input type="text" name="locality" class="form-control" placeholder="Enter locality (e.g. Vijay Nagar, Palasia)..." value="{{ target_locality }}">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold text-navy mb-1"><i class="fa-solid fa-droplet me-1 text-danger"></i>Blood Group Needed</label>
+                    <select name="blood_group" class="form-select">
+                        <option value="">All Compatible Groups</option>
+                        <option value="A+" {% if target_blood == 'A+' %}selected{% endif %}>A+</option>
+                        <option value="A-" {% if target_blood == 'A-' %}selected{% endif %}>A-</option>
+                        <option value="B+" {% if target_blood == 'B+' %}selected{% endif %}>B+</option>
+                        <option value="B-" {% if target_blood == 'B-' %}selected{% endif %}>B-</option>
+                        <option value="AB+" {% if target_blood == 'AB+' %}selected{% endif %}>AB+</option>
+                        <option value="AB-" {% if target_blood == 'AB-' %}selected{% endif %}>AB-</option>
+                        <option value="O+" {% if target_blood == 'O+' %}selected{% endif %}>O+</option>
+                        <option value="O-" {% if target_blood == 'O-' %}selected{% endif %}>O-</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end gap-2 mt-auto">
+                    <button type="submit" class="btn btn-primary w-100 fw-semibold">
+                        <i class="fa-solid fa-magnifying-glass me-1"></i>Search Donors
+                    </button>
+                    {% if target_locality or target_blood %}
+                    <a href="{% url 'donor-info' %}" class="btn btn-outline-secondary" title="Clear Filters"><i class="fa-solid fa-xmark"></i></a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+
         <div class="card p-4 shadow-sm">
             {% if donors %}
             <div class="table-responsive">

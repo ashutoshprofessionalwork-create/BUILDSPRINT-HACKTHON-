@@ -219,6 +219,10 @@ def user_home(request):
 def donor_info(request):
     user_email = request.session.get('session_key')
     current_user = UserDetail.objects.filter(email=user_email).first() if user_email else None
+    
+    # Check if a specific patient request or location search filter was provided via GET params
+    search_locality = request.GET.get('locality', '').strip()
+    search_blood = request.GET.get('blood_group', '').strip()
 
     cutoff_date = timezone.now().date() - datetime.timedelta(days=90)
     all_donors = DonorDetail.objects.all()
@@ -227,13 +231,25 @@ def donor_info(request):
         if d.never_donated or d.last_donation_date is None or d.last_donation_date <= cutoff_date
     ]
 
-    # If user is logged in and has a blood group, filter donors by compatibility
-    if current_user and current_user.blood_group:
-        user_blood = current_user.blood_group.upper()
-        compatible_groups = COMPATIBILITY.get(user_blood, [user_blood])
+    # Priority 1: User or query locality search
+    target_locality = search_locality or (current_user.address if current_user and current_user.address else '')
+    target_blood = search_blood or (current_user.blood_group if current_user and current_user.blood_group else '')
+
+    if target_blood:
+        compatible_groups = COMPATIBILITY.get(target_blood.upper(), [target_blood.upper()])
         eligible_donors = [d for d in eligible_donors if d.blood_group.upper() in compatible_groups]
 
-    return render(request, 'user/donor_info.html', {'donors': eligible_donors})
+    if target_locality:
+        # Sort donors so nearby locality matches appear first
+        eligible_donors.sort(
+            key=lambda d: 0 if d.locality.strip().lower() == target_locality.strip().lower() else 1
+        )
+
+    return render(request, 'user/donor_info.html', {
+        'donors': eligible_donors,
+        'target_locality': target_locality,
+        'target_blood': target_blood
+    })
 
 
 def user_info(request):
