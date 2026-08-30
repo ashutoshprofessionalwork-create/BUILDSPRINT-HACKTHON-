@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 from django.contrib import admin
 from django.utils.html import format_html
@@ -22,3 +23,12 @@ admin.site.register(DonorDetail)
 
 class patient_detail_admin(admin.PatientDetails):
     
+=======
+from django.contrib import admin
+from .models import UserDetail, DonorDetail, PatientDetails
+
+admin.site.register(UserDetail)
+admin.site.register(DonorDetail)
+admin.site.register(PatientDetails)
+
+>>>>>>> d2ff81020421b5956a8e5e59199447b2c3f96de4
